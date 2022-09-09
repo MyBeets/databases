@@ -29,13 +29,13 @@ public class Main {
             fail++;
             logConError();
         }
-        //test 1
+        //test 2
         if(k1.getidx()==0)pass++;
         else{
             fail++;
             logConError();
         }
-        //test 2
+        //test 3
         if(k1.getarr()[0]==0) pass++;
         else{
             fail++;
@@ -43,13 +43,13 @@ public class Main {
         }
         
         Kstack k2 = new Kstack(7);
-        //test 3
+        //test 4
         if(k2.getidx() == 0)pass++;
         else{
             fail++;
             logConError();
         }
-        // test 4
+        // test 5
         int check = 0;
         for(int i = 0; i<7; i++){
             if(k2.getarr()[i] == 0) check++;
@@ -61,7 +61,7 @@ public class Main {
         }
         
         //push tests
-        //test 5
+        //test 6
         try{ 
             k2.push("mingus");
             fail++;
@@ -69,7 +69,7 @@ public class Main {
         }
         catch(Exception e){pass++;}
         
-        //test 6
+        //test 7
         try{
             k2.push(true);
             fail++;
@@ -77,25 +77,49 @@ public class Main {
         }     
         catch(Exception e){pass++;}
         
-        //test 7
+        //test 8
         k2.push(1);
         if(k2.getarr()[k2.getidx()] == 0)pass++;
-        else fail++;
-        
-        //test 8
-        if(k2.getarr()[k2.getidx()-1]==1)pass++;
-        else fail++;
+        else{
+            fail++;
+            LOGGER.log(Level.WARNING, "Failed push destroyed order of stack");
+        }
         
         //test 9
-        //THIS IS BROKEN
-        try{
-            k2.push(Integer.MAX_VALUE+1);
+        if(k2.getarr()[k2.getidx()-1]==1)pass++;
+        else{
             fail++;
-        }     
+            LOGGER.log(Level.WARNING, "Failed to push eelement into stack");
+        }
+        
+        //test 10
+        try{for(int i = 1; i<7; i++){k2.push(i);} pass++;}
+        catch(Exception e){fail++;}
+        
+        //test 11
+        try{k2.push(1); fail++;}
         catch(Exception e){pass++;}
         
-        System.out.println(k2.getarr()[k2.getidx()-1]);
+        //pop tests
+        //test 12
+        Kstack k3 = new Kstack();
+        try{k3.pop(); fail++;}
+        catch(Exception e){pass++;}
         
+        //test 13
+        k3.push(1);
+        int a = k3.pop();
+        if(k3.getarr()[0]==0) pass++;
+        else fail++;
+        //System.out.println(k3.getarr()[0]);
+        
+        //test 14
+        if(k3.getidx() == 0) pass++;
+        else fail++;
+        
+        //test 15
+        if(a==1) pass++;
+        else fail++;
         
         //end
         System.out.println(pass + "/" + (pass+fail) + " Tests Passed");

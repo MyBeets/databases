@@ -38,14 +38,16 @@ public class Kstack {
     //must implement
     public void push(int a) throws RuntimeException{
         // add an exception thrower
-        if(a>Integer.MAX_VALUE || a<Integer.MIN_VALUE) throw new RuntimeException("IllegalArgumentException");
-        array[idx] = a;
-        idx++;
+        if(idx==array.length) throw new RuntimeException("stack overflow");
+           array[idx] = a;
+           idx++;
     }
     public int pop() throws RuntimeException{
         // add an exception thrower
+        if(idx-1<0) throw new RuntimeException("stack underflow");
         idx--;
-        if(idx<0) throw new RuntimeException("stack underflow");
-        return array[idx];
+        int r = array[idx];
+        array[idx] = 0;  
+        return r;
     }
 }
