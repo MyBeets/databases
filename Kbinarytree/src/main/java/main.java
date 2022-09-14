@@ -129,7 +129,7 @@ public class main {
         else fail++;
         
         /*
-        17:
+        17:22
         testing the insert function
         */
         Binarytree b6 = new Binarytree();
@@ -162,6 +162,44 @@ public class main {
         else fail++;
         
         
+        /*
+        23:
+        testing the remove function
+        */
+        Binarytree b7 = new Binarytree();
+        
+        //23
+        try{b7.remove(0); fail++;}
+        catch(Exception e){pass++;}
+        
+        //24
+        b7.insert(1);
+        try{b7.remove(0); fail++;}
+        catch(Exception e){pass++;}
+        
+        //leaf node remover
+        //25
+        b7.insert(2);
+        b7.remove(2);
+        if(b7.getRoot().getRight()==null) pass++;
+        else fail++;
+        
+        //splicer
+        //26
+        b7.insert(2);
+        b7.insert(2);
+        b7.remove(2);
+        if(b7.getRoot().getRight().getValue()==2 && b7.getRoot().getRight().getRight()==null)pass++;
+        else fail++;
+        
+        //rotate
+        //27
+        Binarytree b8 = new Binarytree(1);
+        b8.insert(new int[] {5,6,3,3,4,6,7});
+        b8.remove(5);
+        //System.out.println(b8.getRoot().getRight().getValue());
+        if(b8.getRoot().getRight().getValue()==6)pass++;
+        else fail++;
         
         //end
         System.out.println(pass + "/" + (pass+fail) + " Tests Passed");
