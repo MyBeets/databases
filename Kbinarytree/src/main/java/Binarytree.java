@@ -32,6 +32,26 @@ public class Binarytree {
      * returns void
      */
     public void insert(Node a){
+        // if no root
+        if(root==null) root=a;
         
+
+        a.getValue() > root.getValue()
+        
+    }
+    public void insert(int a){
+        // if no root
+        if(root==null) root= new Node(a);
+        
+        
+    }
+    /**
+     * insert helper methods
+     * append to left and append to right
+    */
+    public void appendRight(){
+        for(Node n = root; a.getValue() > n.getValue(); n=n.getRight()){
+            if(a.getValue())
+        }
     }
 }

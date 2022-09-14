@@ -45,4 +45,18 @@ public class Node {
     public Node getRight(){
         return rchild;
     }
+    
+    //setters
+    public void setValue(int a){
+        value = a;
+    }
+    public void setParent(Node n){
+        parent = n;
+    }
+    public void setLeft(Node n){
+        lchild = n;
+    }
+    public void setRight(Node n){
+        rchild = n;
+    }
 }

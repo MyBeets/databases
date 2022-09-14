@@ -102,6 +102,36 @@ public class main {
         if(b3.getRoot().getValue()==1)pass++;
         else fail++;
         
+        /*
+        tests 13:16
+        testing the two type of insert method when
+        there is no root
+        */
+        Binarytree b4 = new Binarytree();
+        b4.insert(n5);
+        //13
+        if(b4.getRoot() != null)pass++;
+        else fail++;
+        
+        //14
+        if(b4.getRoot().getValue() == 0)pass++;
+        else fail++;
+        
+        
+        Binarytree b5 = new Binarytree();
+        b5.insert(5);
+        //15
+        if(b5.getRoot()!=null) pass++;
+        else fail++;
+        
+        //16
+        if(b5.getRoot().getValue() == 5)pass++;
+        else fail++;
+        
+        /*
+        testing the insert function
+        */
+        
         //end
         System.out.println(pass + "/" + (pass+fail) + " Tests Passed");
     }
