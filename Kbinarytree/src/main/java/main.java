@@ -163,7 +163,7 @@ public class main {
         
         
         /*
-        23:
+        23:27
         testing the remove function
         */
         Binarytree b7 = new Binarytree();
@@ -199,6 +199,31 @@ public class main {
         b8.remove(5);
         //System.out.println(b8.getRoot().getRight().getValue());
         if(b8.getRoot().getRight().getValue()==6)pass++;
+        else fail++;
+        
+        /**
+         * 28:
+         * test for minimum
+         */
+        
+        //28
+        if(b8.minimum().getValue()==1) pass++;
+        else fail++;
+        
+        //29
+        Binarytree b9 = new Binarytree(5);
+        b9.insert(new int[] {3,6,1,4,6,7});
+        if(b9.minimum().getValue()==1) pass++;
+        else fail++;
+        
+        //30
+        b9.remove(1);
+        if(b9.minimum().getValue()==3) pass++;
+        else fail++;
+        
+        //31
+        b9.insert(4);
+        if(b9.minimum().getValue()==3) pass++;
         else fail++;
         
         //end

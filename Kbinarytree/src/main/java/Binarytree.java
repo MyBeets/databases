@@ -160,7 +160,7 @@ public class Binarytree {
                     q.add(n.getRight());
                 }
                 else{
-                    if(n.getLeft() == null){
+                    if(n.getLeft().getValue() == a){
                         return n.getLeft();
                     }
                     q.add(n.getLeft());
@@ -170,5 +170,20 @@ public class Binarytree {
         }
         else return null;
     } 
+    
+    public Node minimum(){
+        Node min = new Node();
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        
+        while(!q.isEmpty()){
+            Node n = q.remove();
+            if(n.getLeft()==null) return n;
+            else{
+                q.add(n.getLeft());
+            }
+        }
+        return min;
+    }
     
 }
