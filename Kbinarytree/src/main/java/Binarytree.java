@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.util.*;
 /**
  *
  * @author isabella
@@ -32,26 +32,39 @@ public class Binarytree {
      * returns void
      */
     public void insert(Node a){
-        // if no root
-        if(root==null) root=a;
-        
+        // if root
+        if(root!=null){
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
 
-        a.getValue() > root.getValue()
+            int val = a.getValue();
+
+            while(!q.isEmpty()){
+                Node n = q.remove();
+                if(n.getValue()<val){
+                    if(n.getRight() == null){
+                        n.setRight(a);
+                        break;
+                    }
+                    q.add(n.getRight());
+                }
+                else{
+                    if(n.getLeft() == null){
+                        n.setLeft(a);
+                        break;
+                    }
+                    q.add(n.getLeft());
+                }
+            }
+        }
+        else{
+            root=a;
+        }
+        
         
     }
     public void insert(int a){
         // if no root
-        if(root==null) root= new Node(a);
-        
-        
-    }
-    /**
-     * insert helper methods
-     * append to left and append to right
-    */
-    public void appendRight(){
-        for(Node n = root; a.getValue() > n.getValue(); n=n.getRight()){
-            if(a.getValue())
-        }
+        insert(new Node(a));
     }
 }

@@ -129,8 +129,39 @@ public class main {
         else fail++;
         
         /*
+        17:
         testing the insert function
         */
+        Binarytree b6 = new Binarytree();
+        //17
+        
+        b6.insert(3);
+        if(b6.getRoot().getValue()==3)pass++;
+        else fail++;
+        
+        //18
+        if(b6.getRoot().getLeft()==null)pass++;
+        else fail++;
+        
+        //19
+        try{b6.insert(3); pass++;}
+        catch(Exception e){fail++;}
+        
+        //20
+        if(b6.getRoot().getLeft().getValue() == 3) pass++;
+        else fail++;
+        
+        //21
+        b6.insert(4);
+        if(b6.getRoot().getRight().getValue() == 4) pass++;
+        else fail++;
+        
+        //22
+        b6.insert(4);
+        if(b6.getRoot().getRight().getLeft().getValue() == 4) pass++;
+        else fail++;
+        
+        
         
         //end
         System.out.println(pass + "/" + (pass+fail) + " Tests Passed");
