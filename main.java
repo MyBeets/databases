@@ -1,10 +1,11 @@
 public class main{
-	int pass = 0;
-	int fail = 0;
 	public static void main(String[] args) {
-	    System.out.println("mingus");
-	    stack ms = new stack(1);
-	    System.out.println(ms.stack);
+		int pass = 0;
+		int fail = 0;
+	    stack1 empty = new stack1(0);
+	    if(empty.arr[0]) pass++;
+
+	    System.out.print(pass + "/" + pass+fail);
 	}
 	public static void testpop(){
 

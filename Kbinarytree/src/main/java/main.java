@@ -226,6 +226,20 @@ public class main {
         if(b9.minimum().getValue()==3) pass++;
         else fail++;
         
+        /*
+        tree walk test
+        */
+        //32
+        Binarytree b10 = new Binarytree(5);
+        b10.insert(2);
+        b10.insert(6);
+        if(b10.treeWalk().equals("2, 5, 6, " )) pass++;
+        else fail++;
+        
+        //33
+        if(b9.treeWalk().equals("3, 4, 4, 5, 6, 6, 7, ")) pass++;
+        else fail++;
+        
         //end
         System.out.println(pass + "/" + (pass+fail) + " Tests Passed");
     }

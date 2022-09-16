@@ -105,28 +105,7 @@ public class Binarytree {
             //two children
             //left most child of the right tree
             if(a.getRight()!=null && a.getLeft()!=null){
-                Node b = a.getRight().getLeft();
-                if(b==null){
-                    b = a.getRight().getRight();
-                }
-                
-                Queue<Node> q = new LinkedList<>();
-                q.add(b);
-
-                while (!q.isEmpty()) {
-                    Node n = q.remove();
-                    if(n.getLeft()==null && n.getRight()==null){
-                        b=n;
-                        break;
-                    }
-                    
-                    if (n.getLeft()!=null) {
-                        q.add(n.getLeft());
-                    }
-                    else if (n.getRight()!=null) {
-                        q.add(n.getRight());
-                    }
-                }
+                Node b = successor(a);
                 remove(b);
                 b.setParent(a.getParent());
                 b.setLeft(a.getLeft());
@@ -140,12 +119,17 @@ public class Binarytree {
         
     }
     public void remove(int a) throws RuntimeException{
-        Node n = search(a);
+        Node n = find(a);
         if(n==null) throw new RuntimeException("Error. Can't remove this element as it is not in the tree");
         else remove(n);
     }
     
-    public Node search(int a){
+    /**
+     * params int
+     * returns Node
+     * return the top most Node of the tree with the input as its value
+     */
+    public Node find(int a){
         // if root
         if(root!=null){
             Queue<Node> q = new LinkedList<>();
@@ -171,6 +155,11 @@ public class Binarytree {
         else return null;
     } 
     
+    /**
+     * params self
+     * returns Node
+     * returns the Node with the smallest value in the tree
+     */
     public Node minimum(){
         Node min = new Node();
         Queue<Node> q = new LinkedList<>();
@@ -184,6 +173,67 @@ public class Binarytree {
             }
         }
         return min;
+    }
+    
+    //public int depth -- use recursion -- implement later im tired
+    
+
+    /**
+     * params self
+     * returns String
+     * returns the values of the Nodes in the tree from smallest to greatest
+     */
+    
+    public String treeWalk(){
+        String tree = "";
+        for(Node n = minimum(); n!=null; n = successor(n)){
+            tree = tree + n.getValue() + ", ";
+        }
+        return tree;
+    }
+    
+
+    /**
+     * params Node
+     * returns Node
+     * finds the successor or next largest node given an input node
+     */
+    public Node successor(Node a){
+        Node b = null;
+        if(a.getRight()==null){
+            if(root==a) return null;
+            else{
+                for(Node n = a; n.getParent()!=null; n=n.getParent()){
+                    if(n.getValue()<=n.getParent().getValue()) return n.getParent();
+                }
+                return null;
+            }
+        }
+        if(a.getRight()!=null){
+            b = a.getRight().getLeft();
+            if (b == null) {
+                b = a.getRight().getRight();
+            }
+            if(b==null) return a.getRight();
+
+            Queue<Node> q = new LinkedList<>();
+            q.add(b);
+
+            while (!q.isEmpty()) {
+                Node n = q.remove();
+                if (n.getLeft() == null && n.getRight() == null) {
+                    b = n;
+                    break;
+                }
+
+                if (n.getLeft() != null) {
+                    q.add(n.getLeft());
+                } else if (n.getRight() != null) {
+                    q.add(n.getRight());
+                }
+            }
+        }
+        return b;
     }
     
 }
