@@ -6,6 +6,7 @@
 **description:** This is an implementation of a binary tree in java
 
 ## **function list** ##
+//in addition to setters and getters for all private variable and constructors
 insert()
 ```
      * params int
@@ -59,4 +60,4 @@ successor()
 ## **functions that aren't included** ##
 Any type of tree refactoring
 Tree Depth Calculator
-(if you think I should I can go and implement this stuff, I alreayd have methods in mind)
+(if you think I should I can go and implement this stuff, I already have methods in mind)
