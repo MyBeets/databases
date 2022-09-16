@@ -1,11 +1,11 @@
-### **General Info** ###
+## **General Info** ##
 **author:** Mark
 
 **acknolwedgements:** Shout out to W3schools becuase i mixed up queue and priority queue and totally broke my code for a while
 
 **description:** This is an implementation of a binary tree in java
 
-### **function list** ###
+## **function list** ##
 insert()
 ```
      * params int
@@ -56,7 +56,7 @@ successor()
 ```
 
 
-### **functions that aren't included** ###
+## **functions that aren't included** ##
 Any type of tree refactoring
 Tree Depth Calculator
 (if you think I should I can go and implement this stuff, I alreayd have methods in mind)
