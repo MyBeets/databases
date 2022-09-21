@@ -42,7 +42,8 @@ public class LinkedList {
      * inserts an element before the last element from a linked list
      */
     public void prepend(Node a){
-        if(head.getNext()==null){ end.setPrev(a); a.setNext(end); head=a;}
+        if(head==null){head = a; end =a;}
+        else if(head.getNext()==null){ end.setPrev(a); a.setNext(end); head=a;}
         else if(head != null){ a.setNext(head); head.setPrev(a); head=a;}
     }
     /**
@@ -51,7 +52,8 @@ public class LinkedList {
      * inserts an element after the last element from a linked list
      */
     public void append(Node a){
-        if(head.getNext()==null){ head.setNext(a); a.setPrev(head); end=a;}
+        if(head==null){head = a; end =a;}
+        else if(head.getNext()==null){ head.setNext(a); a.setPrev(head); end=a;}
         else if(end != null){ a.setPrev(end); end.setNext(a); end=a;}
     }
     /**
@@ -112,8 +114,12 @@ public class LinkedList {
             if(i==idx){
                 Node a = b.getPrev();
                 Node c = b.getNext();
-                a.setNext(c);
-                c.setPrev(a);
+                if(a == null) head = c;
+                else if(c==null) end = a;
+                else{
+                    a.setNext(c);
+                    c.setPrev(a);
+                }
             }
             i++;
         }

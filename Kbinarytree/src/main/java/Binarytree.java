@@ -138,12 +138,14 @@ public class Binarytree {
             while(!q.isEmpty()){
                 Node n = q.remove();
                 if(n.getValue()<a){
+                    if(n.getRight()==null)return null;
                     if(n.getRight().getValue() == a){
                         return n.getRight();
                     }
                     q.add(n.getRight());
                 }
                 else{
+                    if(n.getLeft()==null) return null;
                     if(n.getLeft().getValue() == a){
                         return n.getLeft();
                     }
