@@ -16,28 +16,29 @@ import java.math.*;
 public class test {
     public static void main(String arg[]){
         int n = 10000;
-        int r = 10000;
+        int r = 100000;
+        int cycles = 20;
         Random ran = new Random();
-        for(int r2 = 100; r2<r; r2+=1000){
-            //1
-            Binarytree b1 = new Binarytree();
+        for(int a = 0; a<=cycles; a++){
+            Binarytree B1 = new Binarytree();
             for(int i = 0; i<n; i++){
-               b1.insert(new Node(ran.nextInt(100)));
+               B1.insert(new Node(ran.nextInt(100)));
             }
-            LocalDateTime start = LocalDateTime.now();
-            for(int i = 0; i<r2; i++){
-               /*
-               try{b1.remove(ran.nextInt(100));}
-               catch(Exception e){}
+            
+            int bmax = r/cycles*a;
+            
+            //time start
+            long start = System.nanoTime();
+            for(int b = 0; b<= bmax; b++){
+                B1.insert(new Node(ran.nextInt(100)));
+                /*
+                try{B1.remove(ran.nextInt(100));}
+                catch(Exception e){}
 */
-               b1.insert(ran.nextInt(100));
             }
-            LocalDateTime end = LocalDateTime.now();
-            float f = (float)(end.getNano()-start.getNano())/1000000000;
-            System.out.println(r2+ " , " + (end.getSecond()-start.getSecond())+ String.format("%.5f", f));
-            //System.out.println(start);
-            //System.out.println(end);
-            //compareTo();
-    }
+            long end = System.nanoTime();
+            System.out.println( bmax + " , " + (end-start));
+        }
+
     }
 }

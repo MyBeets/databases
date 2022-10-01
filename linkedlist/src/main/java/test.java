@@ -16,24 +16,27 @@ import java.math.*;
 public class test {
     public static void main(String arg[]){
         int n = 10000;
-        int r = 10000;
+        int r = 100000;
+        int cycles = 20;
         Random ran = new Random();
-        for(int r2 = 100; r2<r; r2+=1000){
-            //1
+        for(int a = 0; a<=cycles; a++){
             LinkedList L1 = new LinkedList();
             for(int i = 0; i<n; i++){
                L1.append(new Node(ran.nextInt(100)));
             }
-            LocalDateTime start = LocalDateTime.now();
-            for(int i = 0; i<r2; i++){
-               L1.removeAtLocation(ran.nextInt(n-r2));
+            
+            int bmax = r/cycles*a;
+            
+            //time start
+            long start = System.nanoTime();
+            for(int b = 0; b<= bmax; b++){
+                //L1.append(new Node(ran.nextInt(100)));
+                try{L1.removeAtLocation(ran.nextInt(n));}
+                catch(Exception e){}
             }
-            LocalDateTime end = LocalDateTime.now();
-            float f = (float)(end.getNano()-start.getNano())/1000000000;
-            System.out.println((end.getSecond()-start.getSecond())+ String.format("%.5f", f)+ " , " +r2);
-            //System.out.println(start);
-            //System.out.println(end);
-            //compareTo();
-    }
+            long end = System.nanoTime();
+            System.out.println( bmax + " , " + (end-start));
+        }
+
     }
 }
