@@ -7,6 +7,7 @@
 
 ## **function list** ##
 //in addition to setters and getters for all private variable and constructors
+## ##
 push()
 ```
      * params self, int
