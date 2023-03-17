@@ -38,6 +38,17 @@ public class Matrix {
         return new Matrix(out,m.getCol_num());
     }
 
+    public int dotproduct(Matrix m) throws Exception{
+        int dot_product = 0;
+        if(m.getCol_num() != 1 || this.getCol_num() !=1) throw new RuntimeException("this is not a vector. the dot product cannot be computed");
+        if(m.getCol_num() != this.getCol_num()) throw new RuntimeException("these vectors do not have the same number of dimensions. the dot product cannot be computed");
+        int[] m_arr = m.getArr();
+        for(int i = 0; i<arr.length; i++){
+            dot_product += arr[i]*m_arr[i];
+        }
+        return dot_product;
+    }
+
     public String toString(){
         String out = "";
         for(int i = 0; i<arr.length; i++){
